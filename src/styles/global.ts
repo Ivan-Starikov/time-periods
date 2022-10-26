@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     overflow: hidden;
     background-color: #e5e5e5;
+    font-family: 'PT Sans', sans-serif;
   }
 `;
 

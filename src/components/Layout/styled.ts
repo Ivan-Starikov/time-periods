@@ -5,14 +5,14 @@ export const Container = styled.div(
     max-width: 90rem;
     height: 100vh;
     margin: 0 auto;
+    position: relative;
 
     &::after, &::before {
       content: '';
       position: absolute;
       width: 1px;
       height: 100%;
-      background-color: ${colors.blackBlue};
-      opacity: 0.2;
+      background-color: ${colors.blackBlue2};
     }
 
     &::after {
@@ -30,8 +30,7 @@ export const CrossedLines = styled.div(
     &::after, &::before {
       content: '';
       position: absolute;
-      background-color: ${colors.blackBlue};
-      opacity: 0.2;
+      background-color: ${colors.blackBlue2};
     }
 
     &::after {
@@ -45,5 +44,18 @@ export const CrossedLines = styled.div(
       height: 100%;
       left: 50%;
     }
+  `
+);
+
+export const CircleLine = styled.div(
+  ({ theme: { colors }}) => css`
+    width: 33.125rem;
+    height: 33.125rem;
+    border-radius: 100%;
+    position: absolute;
+    border: 1px solid ${colors.blackBlue2};
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   `
 );
