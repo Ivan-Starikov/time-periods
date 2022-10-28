@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     background-color: #e5e5e5;
     font-family: 'PT Sans', sans-serif;
+    color: #42567a;
   }
 `;
 
