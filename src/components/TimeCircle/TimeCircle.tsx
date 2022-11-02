@@ -1,50 +1,43 @@
-import { MouseEvent, useEffect, useState, useRef } from 'react';
+import { MouseEvent } from 'react';
 import { gsap } from 'gsap';
 
-import { handleRotation } from '../../utils/handleTimeChange';
-
 import Dot from '../Dot/Dot';
-import ChoosePeriodPanel from '../ChoosePeriodPanel/ChoosePeriodPanel';
 
-import { topics } from '../../data/topics';
+import { handleRotation } from '../../utils/handleTimeChange';
+import { clickProps } from './animationData';
 
 import { topicsType } from '../../types/topics';
 
-import { Wrapper, DotsWrapper, PanelWrapper } from './styled';
+import { CenterWrapper, DotsWrapper } from './styled';
 
-const TimeCircle = () => {
-  const [currentTopic, setCurrentTopic] = useState<topicsType>(topics);
-  const currentTopicNumber = currentTopic.find(({ angle }) => angle === 300)!.number;
-  const dotsRef = useRef(null);
-  // const radius = 16.56;
+type Props = {
+  currentTopic: topicsType;
+  setCurrentTopic: (value: topicsType) => void;
+  currentTopicNumber: number;
+};
+
+const TimeCircle = ({ currentTopic, setCurrentTopic, currentTopicNumber }: Props) => {
 
   const onDotClick = ({ currentTarget }: MouseEvent<HTMLElement>) => {
     const chosenTopicNumber = Number(currentTarget.innerText);
     const step = chosenTopicNumber - currentTopicNumber;
-    const timeHandle = handleRotation(currentTopic, step, true);
+    const timeHandle = handleRotation(currentTopic, step);
 
     setCurrentTopic(timeHandle);
-  };
 
-  useEffect(() => {
-
-    gsap.to(dotsRef.current, {
-      rotation: 60, duration: 1
-    });
-  }, [currentTopic]);
+    gsap.to(currentTarget, clickProps);
+    gsap.to(currentTarget.firstChild, { opacity: 1 });
+   };
 
   return (
     <>
-      <Wrapper>
-        <DotsWrapper ref={dotsRef}>
-          {currentTopic.map(({ number, angle }) => (
-            <Dot key={number} number={number} angle={angle} onClick={onDotClick} />
+      <CenterWrapper>
+        <DotsWrapper>
+          {currentTopic.map(({ number, angle, topic }) => (
+            <Dot key={number} number={number} angle={angle} topic={topic} onClick={onDotClick} />
           ))}
         </DotsWrapper>
-        <PanelWrapper>
-          <ChoosePeriodPanel currentTopic={currentTopic} setCurrentTopic={setCurrentTopic} />
-        </PanelWrapper>
-      </Wrapper>
+      </CenterWrapper>
     </>
   )
 };

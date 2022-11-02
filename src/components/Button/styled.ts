@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 type Props = {
-  disabled: boolean;
-  flipped: boolean;
+  disabled?: boolean;
+  flipped?: boolean;
 };
 
 export const Wrapper = styled.div<Props>(
@@ -13,4 +13,4 @@ export const Wrapper = styled.div<Props>(
     transform: ${flipped && 'rotate(180deg)'};
     cursor: pointer;
   `
-)
+);

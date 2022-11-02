@@ -1,0 +1,45 @@
+:root {
+  --swiper-navigation-size: 0.8rem;
+}
+
+.swiper-wrapper {
+  display: flex;
+  justify-content: start;
+  padding: 0 1rem;
+};
+
+@media (max-width: 52.5rem) {
+  .swiper-wrapper {
+    height: 20rem;
+    border-top: 1px solid rgba(99, 98, 98, 0.228);
+    padding-top: 2rem;
+  };
+};
+
+.swiper-slide:first-child {
+  margin-left: 4rem;
+};
+
+@media (max-width: 52.5rem) {
+  .swiper-slide:first-child {
+    margin-left: 0;
+  };
+};
+
+.swiper-pagination-horizontal {
+  position: absolute;
+  top: 21rem;
+};
+
+.swiper-button-prev, .swiper-button-next {
+  background-color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #bdc7db;
+  border-radius: 100%;
+  box-shadow: 0px 0px 15px rgba(56, 119, 238, 0.1);
+};
+
+.swiper-button-disabled {
+  display: none;
+};

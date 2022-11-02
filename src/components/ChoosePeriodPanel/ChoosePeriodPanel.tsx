@@ -1,8 +1,12 @@
-import Button from '../Button/Button';
+import useScreenSize from '../../hooks/useScreenSize';
+
 import { handleRotation } from '../../utils/handleTimeChange';
 
+import Button from '../Button/Button';
+
 import { topicsType } from 'types/topics';
-import { Wrapper, ButtonWrapper } from './styled';
+
+import { Wrapper, ButtonWrapper, Number } from './styled';
 
 type Props = {
   currentTopic: topicsType;
@@ -10,22 +14,21 @@ type Props = {
 };
 
 const PeriodPanel = ({ currentTopic, setCurrentTopic }: Props) => {
-
-  console.log(currentTopic, 'currentTopic');
+  const { isMobile } = useScreenSize();
 
   const currentTopicNumber = currentTopic.find(({ angle }) => angle === 300)?.number;
 
-  const handleButton = () => {
-    const timeHandle = handleRotation(currentTopic, 1, true);
+  const handleButton = (step: number) => {
+    const timeHandle = handleRotation(currentTopic, step);
     setCurrentTopic(timeHandle);
   };
 
   return (
     <Wrapper>
-      <span>0{currentTopicNumber}/06</span>
+      <Number>0{currentTopicNumber}/06</Number>
       <ButtonWrapper>
-        <Button size="50" stroke="#42567a" onClick={handleButton} disabled={currentTopicNumber === 1} />
-        <Button size="50" stroke="#42567a" flipped onClick={handleButton} disabled={currentTopicNumber === 6} />
+        <Button size={!isMobile ? '50' : '25'} onClick={() => handleButton(-1)} disabled={currentTopicNumber === 1} />
+        <Button size={!isMobile ? '50' : '25'} onClick={() => handleButton(1)} disabled={currentTopicNumber === 6} flipped />
       </ButtonWrapper>
     </Wrapper>
   )

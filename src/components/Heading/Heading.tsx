@@ -1,9 +1,13 @@
+import useScreenSize from '../../hooks/useScreenSize';
+
 import { Wrapper, Header, GradientLine } from './styled';
 
 const Heading = () => {
+  const { isMobile } = useScreenSize();
+
   return (
     <Wrapper>
-      <GradientLine />
+      {!isMobile && <GradientLine />}
       <Header>Исторические <br/> даты</Header>
     </Wrapper>
   )

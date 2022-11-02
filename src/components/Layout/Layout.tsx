@@ -1,11 +1,20 @@
 import { PropsWithChildren } from 'react';
+
+import useScreenSize from '../../hooks/useScreenSize';
+
 import { Container, CrossedLines, CircleLine } from './styled';
 
 const Layout = ({ children }: PropsWithChildren) => {
+  const { isMobile } = useScreenSize();
+
   return (
     <Container>
-      <CrossedLines />
-      <CircleLine />
+      {!isMobile && (
+        <>
+          <CrossedLines />
+          <CircleLine />
+        </>
+      )}
       {children}
     </Container>
   )

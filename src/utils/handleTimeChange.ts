@@ -1,6 +1,6 @@
 import { topicsType } from 'types/topics';
 
-export const handleRotation = (arr: topicsType, step: number, direction: boolean) => {
+export const handleRotation = (arr: topicsType, step: number) => {
 
   const positiveStep = Math.abs(step);
 
@@ -18,7 +18,7 @@ export const handleRotation = (arr: topicsType, step: number, direction: boolean
 
   const angleObjArray = angleArray.map(angle => ({ angle }));
 
- const newAngleArray = arr.map((item, i) => Object.assign({}, item, angleObjArray[i]));
+  const newAngleArray = arr.map((item, i) => Object.assign({}, item, angleObjArray[i]));
 
   return newAngleArray;
 };

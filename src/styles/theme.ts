@@ -1,12 +1,10 @@
 import { DefaultTheme } from 'styled-components';
 
-// export enum Breakpoints {
-//   xs = 320,
-// }
-
 export enum FontSizes {
+  xxs = '0.875rem',
+  xs = '1rem',
   sm = '1.25rem',
-  md = '11.563rem',
+  md = '1.563rem',
   lg = '3.5rem',
   xl = '12.5rem',
 };
@@ -21,7 +19,6 @@ export enum Colors {
 };
 
 const theme: DefaultTheme = {
-  // breakpoints: Breakpoints,
   colors: Colors,
   fontSize: FontSizes,
 };
