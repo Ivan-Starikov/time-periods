@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   position: absolute;
   bottom: 3.5rem;
   padding: 0 1rem;
+  @media (max-width: 30rem) {
+    padding: 5rem 1rem;
+  };
 `;
 
 export const EventWrapper = styled.div`

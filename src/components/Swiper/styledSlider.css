@@ -5,14 +5,14 @@
 .swiper-wrapper {
   display: flex;
   justify-content: start;
-  padding: 0 1rem;
+  padding-left: 4rem;
 };
 
 @media (max-width: 52.5rem) {
   .swiper-wrapper {
     height: 20rem;
     border-top: 1px solid rgba(99, 98, 98, 0.228);
-    padding-top: 2rem;
+    padding: 1rem 2rem;
   };
 };
 
@@ -26,10 +26,9 @@
   };
 };
 
-.swiper-pagination-horizontal {
-  position: absolute;
-  top: 21rem;
-};
+.swiper-pagination {
+  bottom: 1rem
+}
 
 .swiper-button-prev, .swiper-button-next {
   background-color: #fff;
